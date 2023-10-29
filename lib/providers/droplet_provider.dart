@@ -8,16 +8,21 @@ class DropletProvider extends SingleChildStatelessWidget {
   const DropletProvider({
     super.key,
     required this.id,
+    this.seconds,
     Widget? child,
   });
 
   final String id;
+  final int? seconds;
 
   @override
   Widget buildWithChild(BuildContext context, Widget? child) {
     return StreamProvider<Droplet?>(
       initialData: null,
-      create: (BuildContext context) => DropletService(id).stream,
+      create: (BuildContext context) =>
+          DropletService(id, seconds: seconds).stream,
+      updateShouldNotify: (Droplet? previous, Droplet? next) =>
+          previous != next,
       child: child,
     );
   }
