@@ -1,16 +1,24 @@
 # serverman
 
-A new Flutter project.
+A manager for my Minecraft server, hosted on a [DigitalOcean](https://www.digitalocean.com/) droplet.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- [x] List Droplet information
+- [x] List Minecraft server information
 
-A few resources to get you started if this is your first Flutter project:
+## Coming soon
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Droplet (soon)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [ ] Power on/off
+- [ ] Reboot
+- [ ] Resize (upgrade/downgrade)
+
+### Minecraft server (a long way to go yet)
+
+- [ ] Start/stop
+- [ ] Restart
+- [ ] Backup
+- [ ] Restore
+- [ ] Update
