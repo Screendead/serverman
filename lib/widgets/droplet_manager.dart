@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:serverman/models/droplet.dart';
-import 'package:serverman/models/droplet_status.dart';
+import 'package:serverman/models/droplet/droplet.dart';
+import 'package:serverman/models/droplet/droplet_status.dart';
 
 class DropletManager extends StatelessWidget {
   const DropletManager({super.key});

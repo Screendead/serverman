@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
-import 'package:serverman/models/droplet_feature.dart';
-import 'package:serverman/models/droplet_status.dart';
+import 'package:serverman/models/droplet/droplet_feature.dart';
+import 'package:serverman/models/droplet/droplet_status.dart';
 
 @immutable
 class Droplet {

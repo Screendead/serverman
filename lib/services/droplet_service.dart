@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:serverman/helpers/get_droplet_status.dart';
-import 'package:serverman/models/droplet.dart';
+import 'package:serverman/models/droplet/droplet.dart';
 
 class DropletService {
   DropletService(this.id) {
