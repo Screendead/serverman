@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:serverman/firebase_options.dart';
-import 'package:serverman/server_manager.dart';
+import 'package:serverman/droplet_manager.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           body: Center(
         child: ListView(
           children: <Widget>[
-            ServerManager(
+            DropletManager(
               dropletId: dotenv.env['DIGITALOCEAN_DROPLET_ID'] as String,
             ),
           ],

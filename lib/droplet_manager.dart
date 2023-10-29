@@ -3,8 +3,8 @@ import 'package:serverman/helpers/get_droplet_status.dart';
 import 'package:serverman/models/droplet.dart';
 import 'package:serverman/models/droplet_status.dart';
 
-class ServerManager extends StatelessWidget {
-  const ServerManager({super.key, required this.dropletId});
+class DropletManager extends StatelessWidget {
+  const DropletManager({super.key, required this.dropletId});
 
   final String dropletId;
 
