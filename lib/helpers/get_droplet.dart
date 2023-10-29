@@ -23,6 +23,6 @@ Future<Droplet> getDroplet(String dropletId) async {
 
   final Map<String, dynamic> data =
       jsonDecode(response.body) as Map<String, dynamic>;
-  Clipboard.setData(ClipboardData(text: response.body));
+
   return Droplet.fromJson(data['droplet'] as Map<String, dynamic>);
 }
