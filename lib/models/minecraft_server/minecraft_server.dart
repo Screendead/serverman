@@ -113,4 +113,45 @@ class MinecraftServer {
       'srv_record': srvRecord?.toJson(),
     };
   }
+
+  @override
+  int get hashCode {
+    return online.hashCode ^
+        host.hashCode ^
+        port.hashCode ^
+        ipAddress.hashCode ^
+        eulaBlocked.hashCode ^
+        retrievedAt.hashCode ^
+        expiresAt.hashCode ^
+        version.hashCode ^
+        players.hashCode ^
+        motd.hashCode ^
+        icon.hashCode ^
+        mods.hashCode ^
+        software.hashCode ^
+        plugins.hashCode ^
+        srvRecord.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is MinecraftServer &&
+            runtimeType == other.runtimeType &&
+            online == other.online &&
+            host == other.host &&
+            port == other.port &&
+            ipAddress == other.ipAddress &&
+            eulaBlocked == other.eulaBlocked &&
+            retrievedAt == other.retrievedAt &&
+            expiresAt == other.expiresAt &&
+            version == other.version &&
+            players == other.players &&
+            motd == other.motd &&
+            icon == other.icon &&
+            mods == other.mods &&
+            software == other.software &&
+            plugins == other.plugins &&
+            srvRecord == other.srvRecord;
+  }
 }

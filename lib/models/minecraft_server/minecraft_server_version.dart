@@ -31,4 +31,22 @@ class MinecraftServerVersion {
       'protocol': protocol,
     };
   }
+
+  @override
+  int get hashCode {
+    return nameRaw.hashCode ^
+        nameClean.hashCode ^
+        nameHtml.hashCode ^
+        protocol.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is MinecraftServerVersion &&
+            nameRaw == other.nameRaw &&
+            nameClean == other.nameClean &&
+            nameHtml == other.nameHtml &&
+            protocol == other.protocol;
+  }
 }

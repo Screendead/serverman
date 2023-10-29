@@ -36,4 +36,18 @@ class MinecraftServerPlayers {
       'list': list?.map((MinecraftServerPlayer e) => e.toJson()).toList(),
     };
   }
+
+  @override
+  int get hashCode {
+    return online.hashCode ^ max.hashCode ^ list.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is MinecraftServerPlayers &&
+            online == other.online &&
+            max == other.max &&
+            list == other.list;
+  }
 }

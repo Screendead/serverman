@@ -27,4 +27,18 @@ class MinecraftServerMotd {
       'html': html,
     };
   }
+
+  @override
+  int get hashCode {
+    return raw.hashCode ^ clean.hashCode ^ html.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is MinecraftServerMotd &&
+            raw == other.raw &&
+            clean == other.clean &&
+            html == other.html;
+  }
 }

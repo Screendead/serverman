@@ -23,4 +23,17 @@ class MinecraftServerPlugin {
       'version': version,
     };
   }
+
+  @override
+  int get hashCode {
+    return name.hashCode ^ version.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is MinecraftServerPlugin &&
+            name == other.name &&
+            version == other.version;
+  }
 }

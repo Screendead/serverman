@@ -23,4 +23,17 @@ class MinecraftServerSrvRecord {
       'port': port,
     };
   }
+
+  @override
+  int get hashCode {
+    return host.hashCode ^ port.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is MinecraftServerSrvRecord &&
+            host == other.host &&
+            port == other.port;
+  }
 }
