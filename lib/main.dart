@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 import 'package:serverman/firebase_options.dart';
-import 'package:serverman/models/droplet.dart';
-import 'package:serverman/services/droplet_service.dart';
+import 'package:serverman/providers/droplet_provider.dart';
 import 'package:serverman/widgets/droplet_manager.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -22,12 +21,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<Droplet?>.value(
-      value: GetIt.instance.get<DropletService>().dropletStream,
-      initialData: null,
-      updateShouldNotify: (Droplet? previous, Droplet? current) {
-        return previous != current;
-      },
+    return MultiProvider(
+      providers: <SingleChildWidget>[
+        DropletProvider(
+          id: dotenv.env['DIGITALOCEAN_DROPLET_ID'] as String,
+        ),
+      ],
       child: MaterialApp(
         title: 'Server Manager',
         theme: ThemeData(
@@ -37,10 +36,8 @@ class MyApp extends StatelessWidget {
         home: Scaffold(
           body: Center(
             child: ListView(
-              children: <Widget>[
-                DropletManager(
-                  dropletId: dotenv.env['DIGITALOCEAN_DROPLET_ID'] as String,
-                ),
+              children: const <Widget>[
+                DropletManager(),
               ],
             ),
           ),
