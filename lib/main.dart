@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:serverman/firebase_options.dart';
 import 'package:serverman/providers/droplet_provider.dart';
+import 'package:serverman/providers/minecraft_server_provider.dart';
 import 'package:serverman/widgets/droplet_manager.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:serverman/widgets/minecraft_server_info.dart';
 
 Future<void> main() async {
   await dotenv.load();
@@ -25,6 +27,11 @@ class MyApp extends StatelessWidget {
       providers: <SingleChildWidget>[
         DropletProvider(
           id: dotenv.env['DIGITALOCEAN_DROPLET_ID'] as String,
+          seconds: 2,
+        ),
+        MinecraftServerProvider(
+          address: dotenv.env['MINECRAFT_SERVER_ADDRESS'] as String,
+          seconds: 10,
         ),
       ],
       child: MaterialApp(
@@ -38,6 +45,7 @@ class MyApp extends StatelessWidget {
             child: ListView(
               children: const <Widget>[
                 DropletManager(),
+                MinecraftServerInfo(),
               ],
             ),
           ),
