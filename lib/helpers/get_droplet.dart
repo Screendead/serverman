@@ -1,12 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:serverman/models/droplet/droplet.dart';
 
-/// Get Droplet Status by ID (from DigitalOcean API via HTTP GET / BEARER Auth)
-/// Includes: power status, ip address, size string (e.g. s-1vcpu-1gb), region, image, and more
-Future<Droplet> getDropletStatus(String dropletId) async {
+Future<Droplet> getDroplet(String dropletId) async {
   final String apiKey = dotenv.env['DIGITALOCEAN_API_KEY'] as String;
   final String url = 'https://api.digitalocean.com/v2/droplets/$dropletId';
 
@@ -24,5 +23,6 @@ Future<Droplet> getDropletStatus(String dropletId) async {
 
   final Map<String, dynamic> data =
       jsonDecode(response.body) as Map<String, dynamic>;
+  Clipboard.setData(ClipboardData(text: response.body));
   return Droplet.fromJson(data['droplet'] as Map<String, dynamic>);
 }
