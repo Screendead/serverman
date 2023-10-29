@@ -4,10 +4,25 @@ import 'package:serverman/helpers/get_droplet.dart';
 import 'package:serverman/models/droplet/droplet.dart';
 
 class DropletService {
-  DropletService(this.id) {
-    getDroplet(id).then((Droplet value) {
-      droplet = value;
-    });
+  DropletService(
+    this.id, {
+    int? seconds,
+  }) {
+    if (seconds == null) {
+      getDroplet(id).then((Droplet? result) {
+        droplet = result;
+      });
+
+      return;
+    }
+
+    Timer.periodic(
+      Duration(seconds: seconds),
+      (Timer timer) async {
+        final Droplet result = await getDroplet(id);
+        droplet = result;
+      },
+    );
   }
 
   final String id;
