@@ -1,35 +1,34 @@
-enum DropletFeature {
-  privateNetworking,
-  dropletAgent,
-  ipv6,
-  monitoring;
+/*
+- backups
+- droplet_agent
+- install_agent
+- image_transfer
+- ipv6
+- metadata
+- private_networking
+- storage
+*/
 
-  static DropletFeature fromString(String feature) {
-    switch (feature) {
-      case 'private_networking':
-        return DropletFeature.privateNetworking;
-      case 'droplet_agent':
-        return DropletFeature.dropletAgent;
-      case 'ipv6':
-        return DropletFeature.ipv6;
-      case 'monitoring':
-        return DropletFeature.monitoring;
-      default:
-        throw Exception('Unknown feature: $feature');
-    }
+enum DropletFeature {
+  backups('backups'),
+  dropletAgent('droplet_agent'),
+  installAgent('install_agent'),
+  imageTransfer('image_transfer'),
+  ipv6('ipv6'),
+  metadata('metadata'),
+  privateNetworking('private_networking'),
+  storage('storage');
+
+  final String value;
+
+  const DropletFeature(this.value);
+
+  static DropletFeature fromString(String value) {
+    return DropletFeature.values.firstWhere(
+      (DropletFeature element) => element.value == value,
+    );
   }
 
   @override
-  String toString() {
-    switch (this) {
-      case DropletFeature.privateNetworking:
-        return 'private_networking';
-      case DropletFeature.dropletAgent:
-        return 'droplet_agent';
-      case DropletFeature.ipv6:
-        return 'ipv6';
-      case DropletFeature.monitoring:
-        return 'monitoring';
-    }
-  }
+  String toString() => value;
 }

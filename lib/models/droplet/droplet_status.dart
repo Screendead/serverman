@@ -1,35 +1,21 @@
 enum DropletStatus {
-  fresh,
-  active,
-  off,
-  archive;
+  newDroplet('new'),
+  active('active'),
+  off('off'),
+  archive('archive');
 
-  static DropletStatus fromString(String status) {
-    switch (status) {
-      case 'new':
-        return fresh;
-      case 'active':
-        return active;
-      case 'off':
-        return off;
-      case 'archive':
-        return archive;
-      default:
-        throw Exception('Unknown DropletStatus: $status');
-    }
+  final String value;
+
+  const DropletStatus(this.value);
+
+  factory DropletStatus.fromString(String json) {
+    return DropletStatus.values.firstWhere(
+      (DropletStatus element) => element.value == json,
+    );
   }
 
   @override
   String toString() {
-    switch (this) {
-      case DropletStatus.fresh:
-        return 'new';
-      case DropletStatus.active:
-        return 'active';
-      case DropletStatus.off:
-        return 'off';
-      case DropletStatus.archive:
-        return 'archive';
-    }
+    return value;
   }
 }
