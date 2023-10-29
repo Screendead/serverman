@@ -17,7 +17,7 @@ class DropletProvider extends SingleChildStatelessWidget {
   Widget buildWithChild(BuildContext context, Widget? child) {
     return StreamProvider<Droplet?>(
       initialData: null,
-      create: (BuildContext context) => DropletService(id).dropletStream,
+      create: (BuildContext context) => DropletService(id).stream,
       child: child,
     );
   }
