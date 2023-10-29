@@ -6,7 +6,9 @@ import 'package:serverman/models/droplet_status.dart';
 @immutable
 class Droplet {
   const Droplet({
+    required this.id,
     required this.name,
+    required this.ip,
     required this.memory,
     required this.vcpus,
     required this.disk,
@@ -15,7 +17,9 @@ class Droplet {
     required this.features,
   });
 
+  final int id;
   final String name;
+  final String ip;
   final int memory;
   final int vcpus;
   final int disk;
