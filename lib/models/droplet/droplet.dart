@@ -124,4 +124,55 @@ class Droplet {
       'vpc_uuid': vpcUuid,
     };
   }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        name.hashCode ^
+        memory.hashCode ^
+        vcpus.hashCode ^
+        disk.hashCode ^
+        locked.hashCode ^
+        status.hashCode ^
+        createdAt.hashCode ^
+        features.hashCode ^
+        backupIds.hashCode ^
+        nextBackupWindow.hashCode ^
+        snapshotIds.hashCode ^
+        image.hashCode ^
+        volumeIds.hashCode ^
+        size.hashCode ^
+        sizeSlug.hashCode ^
+        networks.hashCode ^
+        region.hashCode ^
+        tags.hashCode ^
+        vpcUuid.hashCode;
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is Droplet &&
+            runtimeType == other.runtimeType &&
+            id == other.id &&
+            name == other.name &&
+            memory == other.memory &&
+            vcpus == other.vcpus &&
+            disk == other.disk &&
+            locked == other.locked &&
+            status == other.status &&
+            createdAt == other.createdAt &&
+            features == other.features &&
+            backupIds == other.backupIds &&
+            nextBackupWindow == other.nextBackupWindow &&
+            snapshotIds == other.snapshotIds &&
+            image == other.image &&
+            volumeIds == other.volumeIds &&
+            size == other.size &&
+            sizeSlug == other.sizeSlug &&
+            networks == other.networks &&
+            region == other.region &&
+            tags == other.tags &&
+            vpcUuid == other.vpcUuid;
+  }
 }
