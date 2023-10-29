@@ -30,9 +30,9 @@ class DropletManager extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          droplet.name,
-                          style: const TextStyle(
+                        const Text(
+                          'Droplet',
+                          style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -48,6 +48,7 @@ class DropletManager extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 16),
+                    buildInfoRow('Name:', droplet.name),
                     buildInfoRow('Memory:', '${droplet.memory} MB'),
                     buildInfoRow('vCPUs:', '${droplet.vcpus}'),
                     buildInfoRow('Disk:', '${droplet.disk} GB'),
