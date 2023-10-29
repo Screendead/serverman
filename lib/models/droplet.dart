@@ -8,7 +8,7 @@ class Droplet {
   const Droplet({
     required this.id,
     required this.name,
-    required this.ip,
+    required this.sizeSlug,
     required this.memory,
     required this.vcpus,
     required this.disk,
@@ -19,7 +19,7 @@ class Droplet {
 
   final int id;
   final String name;
-  final String ip;
+  final String sizeSlug;
   final int memory;
   final int vcpus;
   final int disk;
@@ -29,7 +29,9 @@ class Droplet {
 
   factory Droplet.fromJson(Map<String, dynamic> json) {
     return Droplet(
+      id: json['id'] as int,
       name: json['name'] as String,
+      sizeSlug: json['size_slug'] as String,
       memory: json['memory'] as int,
       vcpus: json['vcpus'] as int,
       disk: json['disk'] as int,
@@ -44,7 +46,9 @@ class Droplet {
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
+      'id': id,
       'name': name,
+      'size_slug': sizeSlug,
       'memory': memory,
       'vcpus': vcpus,
       'disk': disk,
